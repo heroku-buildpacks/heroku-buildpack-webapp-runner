@@ -22,7 +22,6 @@ mv $CACHE_DIR/war .
 
 # TODO: Md5
 # TODO: s3
-WEBAPP_RUNNER_VERSION="7.0.22.3"
 WEBAPP_RUNNER_URL="http://repo1.maven.org/maven2/com/github/jsimone/webapp-runner/$WEBAPP_RUNNER_VERSION/webapp-runner-$WEBAPP_RUNNER_VERSION.jar"
 echo -n "-----> Installing webapp-runner $WEBAPP_RUNNER_VERSION....."
 curl --silent --location $WEBAPP_RUNNER_URL > webapp-runner.jar
