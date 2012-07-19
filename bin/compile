@@ -12,14 +12,6 @@ CACHE_DIR=$2
 # include .files when moving things around
 shopt -s dotglob
 
-cd $BUILD_DIR
-
-# move everything in things to war dir
-# TODO: use real tmp dir?
-mkdir -p $CACHE_DIR/war
-mv * $CACHE_DIR/war
-mv $CACHE_DIR/war .
-
 CACHE_TEST_FILE=$CACHE_DIR/test123
 if [ -f $CACHE_TEST_FILE ]; then
   echo "$CACHE_TEST_FILE exists"
@@ -27,6 +19,14 @@ else
   touch $CACHE_DIR/test123
   echo "$CACHE_TEST_FILE created"
 fi
+
+cd $BUILD_DIR
+
+# move everything in things to war dir
+# TODO: use real tmp dir?
+mkdir -p $CACHE_DIR/war
+mv * $CACHE_DIR/war
+mv $CACHE_DIR/war .
 
 # TODO: Md5
 # TODO: s3
