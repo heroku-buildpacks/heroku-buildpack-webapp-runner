@@ -20,6 +20,8 @@ mkdir -p $CACHE_DIR/war
 mv * $CACHE_DIR/war
 mv $CACHE_DIR/war .
 
+touch $CACHE_DIR/test123
+
 # TODO: Md5
 # TODO: s3
 WEBAPP_RUNNER_URL="http://repo1.maven.org/maven2/com/github/jsimone/webapp-runner/$WEBAPP_RUNNER_VERSION/webapp-runner-$WEBAPP_RUNNER_VERSION.jar"
@@ -27,7 +29,8 @@ echo -n "-----> Installing webapp-runner $WEBAPP_RUNNER_VERSION....."
 curl --fail --silent --location $WEBAPP_RUNNER_URL > webapp-runner.jar
 echo " done"
 
-#TODO: allow for custom Procfile
-cat > Procfile <<EOF
+if [ ! -f Procfile ]; then
+  cat > Procfile <<EOF
 web: java \$JAVA_OPTS -jar webapp-runner.jar --port \$PORT war
 EOF
+if
